@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.google.android.material.button.MaterialButton
@@ -103,13 +104,22 @@ class AuthFragment : BaseFragment() {
         emailText.clearErrorOnChange()
         passwordText.clearErrorOnChange()
 
+        if(viewModel.email != null)
+            emailText.setText(viewModel.email, false)
+        if(viewModel.password != null)
+            passwordText.setText(viewModel.password, false)
+
+        emailText.editText.addTextChangedListener {
+            viewModel.email = it?.toString()
+        }
+        passwordText.editText.addTextChangedListener {
+            viewModel.password = it?.toString()
+        }
+
         button.setOnClickListener {
             button.isEnabled = false
             showLoading(false)
-            viewModel.login(
-                emailText.editText.text.toString(),
-                passwordText.editText.text.toString()
-            )
+            viewModel.login()
         }
     }
 

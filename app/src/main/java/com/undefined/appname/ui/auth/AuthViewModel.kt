@@ -18,11 +18,14 @@ class AuthViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase
 ): ViewModel(){
 
+    var email: String? = null
+    var password: String? = null
+
     private val _loginState = DisposableLiveData<UIState<Nothing>>()
     val loginState: LiveData<UIState<Nothing>> = _loginState
 
 
-    fun login(email: String?, password: String?){
+    fun login(){
         viewModelScope.launch {
             _loginState.postValue(loginUseCase.invoke(email, password))
         }

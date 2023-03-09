@@ -30,16 +30,19 @@ class MainActivity : BaseActivity() {
         setContentView(frameLayout)
 
         viewModel.userLoggedIn.observe(this) {
-            supportFragmentManager
-                .beginTransaction()
-                .add(
-                    R.id.frame_layout,
-                    if (it)
-                        MainFragment()
-                    else
-                        AuthFragment()
-                )
-                .commit()
+            if (it){
+                val fragment = supportFragmentManager.findFragmentByTag("main")
+                if (fragment == null)
+                    supportFragmentManager.beginTransaction()
+                        .add(R.id.frame_layout, MainFragment(), "main")
+                        .commit()
+            } else {
+                val fragment = supportFragmentManager.findFragmentByTag("auth")
+                if (fragment == null)
+                    supportFragmentManager.beginTransaction()
+                        .add(R.id.frame_layout, AuthFragment(), "auth")
+                        .commit()
+            }
         }
 
         viewModel.loadAppState()
