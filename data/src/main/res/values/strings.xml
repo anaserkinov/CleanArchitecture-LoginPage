@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tag_email" translatable="false">email</string>
+    <string name="tag_password" translatable="false">password</string>
+
+    <string name="required_field">Required field !</string>
+    <string name="invalid_input">Invalid input !</string>
+    <string name="min_length_error">"Min length is %d"</string>
+</resources>
