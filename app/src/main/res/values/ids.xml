@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="frame_layout"/>
+    <item type="id" name="email_text"/>
+    <item type="id" name="password_text"/>
+    <item type="id" name="login_button"/>
+
+    <item type="id" name="detail_text"/>
+    <item type="id" name="logout_button"/>
+</resources>

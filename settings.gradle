@@ -16,3 +16,4 @@ rootProject.name = "CleanArchitecture-LoginPage"
 include ':app'
 include ':domain'
 include ':data'
+include ':lifecycle:livedata-core'
